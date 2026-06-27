@@ -159,6 +159,10 @@
   @media(max-width:430px){
     .tiles{gap:6px}
     .stage{height:158px}
+    .node{width:52px}
+    .node .pic{width:38px;height:38px}
+    .node .nm{font-size:7.5px;max-width:54px}
+    .node .vchip{font-size:7px}
   }
 
   /* ===== PANELS ===== */
@@ -175,7 +179,29 @@
   .ring .core{position:absolute;inset:33%;border-radius:50%;background:radial-gradient(circle,rgba(63,185,80,.16),rgba(0,0,0,.45));border:1px solid var(--line2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
   .ring .core b{font-family:var(--head);font-weight:800;font-size:clamp(24px,6vw,34px);color:var(--hi);line-height:1}
   .ring .core span{font-size:10.5px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;margin-top:3px}
-  .node{position:absolute;top:50%;left:50%;width:13.5%;aspect-ratio:1/1;margin:0;transform:translate(-50%,-50%);border-radius:13px;overflow:hidden;background:#0c1422;border:1px solid var(--line2);box-shadow:0 10px 24px -12px rgba(0,0,0,.9)}
+  .node{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;display:flex;flex-direction:column;align-items:center;gap:3px}
+  .node .pic{position:relative;width:46px;height:46px;border-radius:11px;overflow:hidden;background:#0c1422;box-shadow:0 0 0 1px var(--line2);border:2px solid transparent;transition:box-shadow .25s,transform .22s,border-color .25s}
+  .node.voted .pic{border-color:var(--vc);box-shadow:0 0 16px -3px var(--vc),0 0 0 1px var(--vc)}
+  .node.pop .pic{transform:scale(1.15)}
+  .node .nm{font-family:var(--head);font-weight:700;font-size:8.5px;line-height:1.05;color:var(--dim);text-align:center;max-width:66px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .25s;text-shadow:0 1px 3px #010409,0 0 5px #010409,0 0 5px #010409}
+  .node.voted .nm{color:var(--txt)}
+  .node .vchip{font-family:var(--head);font-weight:900;font-size:8px;color:#04070d;background:var(--vc);border-radius:4px;padding:0 5px;height:13px;line-height:13px;opacity:0;transform:scale(.5);transition:opacity .2s,transform .2s}
+  .node.voted .vchip{opacity:1;transform:scale(1)}
+  .delib{position:absolute;top:50%;left:50%;width:34%;aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(88,166,255,.55);transform:translate(-50%,-50%) scale(.6);opacity:0;pointer-events:none}
+  .ring.live .delib{animation:delib 2.2s ease-out infinite}
+  .ring.live .delib.d2{animation-delay:1.1s}
+  @keyframes delib{0%{opacity:.45;transform:translate(-50%,-50%) scale(.6)}100%{opacity:0;transform:translate(-50%,-50%) scale(2)}}
+  .ring.live .core{animation:corepulse 2.1s ease-in-out infinite}
+  @keyframes corepulse{50%{transform:scale(1.06)}}
+  .token{position:absolute;left:50%;top:50%;width:13px;height:13px;border-radius:50%;background:var(--tc,#3fb950);box-shadow:0 0 12px var(--tc,#3fb950);opacity:0;z-index:6;pointer-events:none;transform:translate(-50%,-50%)}
+  .core.verdict b{color:var(--vc)}
+  .core.verdict span{color:var(--vc);opacity:.95}
+  .votehead{text-align:center;margin-bottom:16px}
+  .votehead .vh-kick{display:block;font-family:var(--head);font-weight:700;letter-spacing:.14em;font-size:11px;text-transform:uppercase;color:#5b87c9;margin-bottom:5px;transition:color .3s}
+  .votehead .vh-topic{font-family:var(--head);font-weight:800;font-size:clamp(22px,4vw,30px);color:var(--hi)}
+  .ringtally{max-width:300px;margin:24px auto 0}
+  .ringtally .vrow{margin-bottom:9px;font-size:12.5px}
+  .ringtally .vrow .vn{font-variant-numeric:tabular-nums}
 
   /* feature split */
   .split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;max-width:980px;margin:0 auto}
@@ -200,6 +226,28 @@
   .dna-row .tr{flex:1;height:8px;border-radius:5px;background:rgba(255,255,255,.07);overflow:hidden}
   .dna-row .tr i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--green),var(--teal));width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
   .dna-row .sc{width:42px;text-align:right;font-family:var(--head);font-weight:700;font-size:12.5px;color:var(--green2);font-variant-numeric:tabular-nums}
+
+  /* ===== Committee Genome — DNA helix ===== */
+  .genome{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:center;max-width:980px;margin:0 auto}
+  .helix{position:relative;width:100%;max-width:300px;margin:0 auto;aspect-ratio:300/460}
+  .helix-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 7px rgba(45,212,191,.28))}
+  .helix .beads{position:absolute;inset:0}
+  .bead{position:absolute;left:50%;top:50%;width:13.5%;aspect-ratio:1;border-radius:11px;overflow:hidden;background:#0c1422;box-shadow:0 0 0 1px var(--line2);will-change:transform,opacity}
+  .bead.proven{box-shadow:0 0 0 1.5px var(--green2),0 0 16px -2px var(--green2)}
+  .helix-tag{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-family:var(--head);font-weight:700;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+  .helix-tag::first-letter{color:var(--green2)}
+  .gstats{display:flex;gap:11px;margin-bottom:22px}
+  .gstat{flex:1;background:linear-gradient(165deg,rgba(22,30,41,.6),rgba(7,11,17,.85));border:1px solid var(--line2);border-radius:14px;padding:14px 6px;text-align:center}
+  .gstat b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(18px,3vw,25px);color:var(--hi);font-variant-numeric:tabular-nums;line-height:1}
+  .gstat span{font-size:10px;color:var(--dim);letter-spacing:.02em;margin-top:5px;display:block}
+  .gbars-h{font-family:var(--head);font-weight:700;font-size:11.5px;color:var(--green2);letter-spacing:.06em;margin-bottom:12px;text-transform:uppercase}
+  .genome-side .dna{margin:0;max-width:none}
+  @media(max-width:840px){
+    .genome{grid-template-columns:1fr;gap:30px}
+    .gstats{max-width:430px;margin:0 auto 18px}
+    .gbars-h{text-align:center}
+    .genome-side .dna{max-width:430px;margin:0 auto}
+  }
 
   /* CTA */
   .cta-box{max-width:680px;margin:0 auto;text-align:center;background:radial-gradient(120% 120% at 50% 0%,rgba(63,185,80,.12),rgba(10,15,22,.6));border:1px solid var(--line2);border-radius:24px;padding:52px 30px;box-shadow:0 40px 100px -50px rgba(63,185,80,.5)}
@@ -275,12 +323,23 @@
 <section id="room">
   <div class="wrap">
     <div class="panel-head reveal">
-      <span class="kicker">The Room</span>
-      <h2>Sixteen specialists. Every angle has an <span class="grad">owner.</span></h2>
-      <p>Strategy, momentum, risk, macro, valuation, quant, taxes, catalysts and more — 360° coverage of your book, so nothing goes unwatched.</p>
+      <span class="kicker">The Room · Live Vote</span>
+      <h2>Watch the committee <span class="grad">vote.</span></h2>
+      <p>Sixteen specialists each weigh in — BUY, HOLD or AVOID — and the tally builds in real time. The room advises; you decide.</p>
+    </div>
+    <div class="votehead reveal">
+      <span class="vh-kick" id="vhKick">The committee is voting on</span>
+      <span class="vh-topic">NVDA</span>
     </div>
     <div class="ring reveal" id="ring">
-      <div class="core"><b>16</b><span>partners · 360°</span></div>
+      <div class="delib d1"></div><div class="delib d2"></div>
+      <div class="core" id="core"><b class="count" id="coreCount">0</b><span class="clabel" id="coreLabel">votes in</span></div>
+      <div class="token" id="token"></div>
+    </div>
+    <div class="ringtally reveal">
+      <div class="vrow vbuy"><span class="vl">BUY</span><span class="vt"><i id="tb-buy"></i></span><span class="vn" id="tn-buy">0</span></div>
+      <div class="vrow vhold"><span class="vl">HOLD</span><span class="vt"><i id="tb-hold"></i></span><span class="vn" id="tn-hold">0</span></div>
+      <div class="vrow vavoid"><span class="vl">AVOID</span><span class="vt"><i id="tb-avoid"></i></span><span class="vn" id="tn-avoid">0</span></div>
     </div>
   </div>
 </section>
@@ -310,11 +369,34 @@
 <section id="learns">
   <div class="wrap">
     <div class="panel-head reveal">
-      <span class="kicker">It Learns</span>
-      <h2>Every call is graded. The room gets <span class="grad">smarter.</span></h2>
-      <p>Real calls are scored against what actually happened. Proven voices earn more weight — building a Partner DNA that becomes uniquely yours.</p>
+      <span class="kicker">It Learns · The Genome</span>
+      <h2>Every call graded. The committee builds its <span class="grad">DNA.</span></h2>
+      <p>Each partner earns a track record, and the whole room compounds it into a Community DNA — a living genome you can grow, share, even fork.</p>
     </div>
-    <div class="dna reveal" id="dna"></div>
+    <div class="genome reveal">
+      <div class="helix" id="helix">
+        <svg class="helix-svg" id="helixSvg" viewBox="0 0 300 460" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="strandA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fb950"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient>
+            <linearGradient id="strandB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#58a6ff"/></linearGradient>
+          </defs>
+          <g id="rungs"></g>
+          <path id="pathA" fill="none" stroke="url(#strandA)" stroke-width="3.2" stroke-linecap="round"/>
+          <path id="pathB" fill="none" stroke="url(#strandB)" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+        <div class="beads" id="beads"></div>
+        <span class="helix-tag">● The Committee Genome</span>
+      </div>
+      <div class="genome-side">
+        <div class="gstats">
+          <div class="gstat"><b id="gCalls">0</b><span>calls graded</span></div>
+          <div class="gstat"><b id="gStrength">0%</b><span>committee strength</span></div>
+          <div class="gstat"><b>∞</b><span>forkable &amp; shareable</span></div>
+        </div>
+        <div class="gbars-h">Proven voices carry more weight</div>
+        <div class="dna" id="dna"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -438,18 +520,79 @@ heroOrder.forEach(name=>{
   d.innerHTML='<span class="bars"><span></span><span></span><span></span></span>'+avTalk(YOU_SVG,YOU.skin)+'<span class="chip">You</span>';
   tilesEl.appendChild(d);})();
 
-/* coverage ring — all 16 partner faces */
-const ring=document.getElementById('ring');
-const N=DEF.length;
-for(let i=0;i<N;i++){
-  const ang=(i/N)*2*Math.PI - Math.PI/2;
+/* ===== The Room — live committee vote (mirrors the app's CommitteeVote) ===== */
+const VC={BUY:'#3fb950',HOLD:'#fbbf24',AVOID:'#f85149'};
+// seat i -> choice. Totals: BUY 10 · HOLD 4 · AVOID 2 = 16
+const BALLOT=['BUY','BUY','BUY','AVOID','HOLD','BUY','HOLD','BUY','BUY','AVOID','BUY','BUY','BUY','HOLD','HOLD','BUY'];
+const ringEl=document.getElementById('ring');
+const Nv=DEF.length;
+const nodeEls=[];
+for(let i=0;i<Nv;i++){
+  const ang=(i/Nv)*2*Math.PI - Math.PI/2;
   const R=43;const x=50+R*Math.cos(ang),y=50+R*Math.sin(ang);
   const node=document.createElement('div');node.className='node';
   node.style.left=x+'%';node.style.top=y+'%';
-  node.title=DEF[i].name;
-  node.innerHTML=avStatic(SVG[i]);
-  ring.appendChild(node);
+  node.innerHTML='<div class="pic">'+avStatic(SVG[i])+'</div><div class="nm">'+DEF[i].name+'</div><div class="vchip">·</div>';
+  ringEl.appendChild(node);nodeEls.push(node);
 }
+const core=document.getElementById('core'),coreCount=document.getElementById('coreCount'),coreLabel=document.getElementById('coreLabel');
+const token=document.getElementById('token'),vhKick=document.getElementById('vhKick');
+const tb={BUY:document.getElementById('tb-buy'),HOLD:document.getElementById('tb-hold'),AVOID:document.getElementById('tb-avoid')};
+const tn={BUY:document.getElementById('tn-buy'),HOLD:document.getElementById('tn-hold'),AVOID:document.getElementById('tn-avoid')};
+let voteTimers=[],confTimer=null,voteRunning=false;
+function resetVote(){
+  voteTimers.forEach(clearTimeout);voteTimers=[];if(confTimer)clearInterval(confTimer);
+  ringEl.classList.remove('live');
+  nodeEls.forEach(n=>{n.classList.remove('voted','pop');n.style.removeProperty('--vc');n.querySelector('.vchip').textContent='·';});
+  core.classList.remove('verdict');core.style.removeProperty('--vc');
+  coreCount.textContent='0';coreLabel.textContent='votes in';
+  ['BUY','HOLD','AVOID'].forEach(k=>{tb[k].style.width='0%';tn[k].textContent='0';});
+  vhKick.textContent='The committee is voting on';
+  token.style.opacity='0';
+}
+function flyToken(node,color){
+  const rr=ringEl.getBoundingClientRect(),nr=node.querySelector('.pic').getBoundingClientRect();
+  const x=nr.left+nr.width/2-rr.left,y=nr.top+nr.height/2-rr.top;
+  token.style.transition='none';token.style.setProperty('--tc',color);
+  token.style.left=x+'px';token.style.top=y+'px';token.style.opacity='1';token.style.transform='translate(-50%,-50%) scale(1)';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    token.style.transition='left .26s cubic-bezier(.5,0,.7,1),top .26s cubic-bezier(.5,0,.7,1),opacity .26s ease .07s,transform .26s';
+    token.style.left='50%';token.style.top='50%';token.style.opacity='0';token.style.transform='translate(-50%,-50%) scale(.45)';
+  }));
+}
+function runVote(){
+  if(voteRunning)return;voteRunning=true;resetVote();
+  ringEl.classList.add('live');
+  const counts={BUY:0,HOLD:0,AVOID:0},total=Nv,STEP=240,START=650;
+  for(let i=0;i<Nv;i++){
+    voteTimers.push(setTimeout(()=>{
+      const ch=BALLOT[i],col=VC[ch],node=nodeEls[i];
+      node.style.setProperty('--vc',col);
+      node.classList.add('voted','pop');
+      node.querySelector('.vchip').textContent=ch;
+      setTimeout(()=>node.classList.remove('pop'),240);
+      flyToken(node,col);
+      counts[ch]++;coreCount.textContent=(i+1);
+      ['BUY','HOLD','AVOID'].forEach(k=>{tb[k].style.width=(counts[k]/total*100)+'%';tn[k].textContent=counts[k];});
+    },START+i*STEP));
+  }
+  voteTimers.push(setTimeout(()=>{
+    const win=Object.keys(counts).reduce((a,b)=>counts[a]>=counts[b]?a:b);
+    const conf=Math.round(50+counts[win]/total*50);
+    ringEl.classList.remove('live');
+    core.classList.add('verdict');core.style.setProperty('--vc',VC[win]);
+    vhKick.textContent='The committee has voted';
+    coreLabel.textContent=win+' · confident';
+    let c=0;coreCount.textContent='0%';
+    confTimer=setInterval(()=>{c+=3;if(c>=conf){c=conf;clearInterval(confTimer);}coreCount.textContent=c+'%';},22);
+    voteRunning=false;
+  },START+Nv*STEP+500));
+}
+const voteIO=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)runVote();}),{threshold:.4});
+voteIO.observe(ringEl);
+ringEl.style.cursor='pointer';
+ringEl.title='Replay vote';
+ringEl.addEventListener('click',()=>{voteRunning=false;runVote();});
 
 /* Partner DNA bars (real faces) */
 const dnaData=[
@@ -463,6 +606,68 @@ dnaData.forEach(d=>{
 });
 const dnaIO=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){dnaEl.querySelectorAll('.tr i').forEach(i=>i.style.width=i.dataset.w+'%');dnaIO.disconnect();}}),{threshold:.4});
 dnaIO.observe(dnaEl);
+
+/* ===== Committee Genome — rotating DNA double-helix that builds up ===== */
+(function(){
+  const helix=document.getElementById('helix');if(!helix)return;
+  const pA=document.getElementById('pathA'),pB=document.getElementById('pathB');
+  const rungsG=document.getElementById('rungs'),beadsEl=document.getElementById('beads');
+  const gCalls=document.getElementById('gCalls'),gStrength=document.getElementById('gStrength');
+  const VBW=300,VBH=460,midX=150,amp=94,turns=2.3,yTop=48,yBot=412,yRange=yBot-yTop;
+  /* partner-face beads riding the helix; proven ones glow */
+  const beadDefs=[{name:'Risk',proven:true},{name:'Quant',proven:true},{name:'Path $1M'},{name:'Conviction'},{name:'Scout'},{name:'Macro FX'},{name:'Momentum'},{name:'Social'}];
+  const beads=beadDefs.map((b,m)=>{
+    const el=document.createElement('div');el.className='bead'+(b.proven?' proven':'');
+    el.innerHTML=avStatic(SVG[byName[b.name]]);beadsEl.appendChild(el);
+    return {el,t:(m+0.5)/beadDefs.length};
+  });
+  /* base-pair rungs coloured by call outcome (green=right, amber=mixed, red=wrong) */
+  const NS='http://www.w3.org/2000/svg';
+  const outc=['#3fb950','#3fb950','#fbbf24','#3fb950','#3fb950','#f85149','#3fb950','#fbbf24','#3fb950','#3fb950','#3fb950'];
+  const rungEls=outc.map((c,r)=>{
+    const ln=document.createElementNS(NS,'line');ln.setAttribute('stroke-width','2.4');ln.setAttribute('stroke-linecap','round');ln.setAttribute('stroke',c);
+    const d1=document.createElementNS(NS,'circle');d1.setAttribute('r','2.7');d1.setAttribute('fill',c);
+    const d2=document.createElementNS(NS,'circle');d2.setAttribute('r','2.7');d2.setAttribute('fill',c);
+    rungsG.appendChild(ln);rungsG.appendChild(d1);rungsG.appendChild(d2);
+    return {ln,d1,d2,t:(r+0.5)/outc.length};
+  });
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let g=0,progress=0,built=false,running=false,raf=null;const SAMP=64,TAU=Math.PI*2;
+  function frame(){
+    if(!reduce)g+=0.011;
+    if(!built){progress=Math.min(1,progress+0.013);if(progress>=1)built=true;}
+    let dA='',dB='';const maxS=Math.round(SAMP*progress);
+    for(let s=0;s<=maxS;s++){
+      const t=s/SAMP,y=yTop+t*yRange,ph=t*turns*TAU+g;
+      const xA=midX+amp*Math.sin(ph),xB=midX-amp*Math.sin(ph);
+      dA+=(s===0?'M':'L')+xA.toFixed(1)+' '+y.toFixed(1);
+      dB+=(s===0?'M':'L')+xB.toFixed(1)+' '+y.toFixed(1);
+    }
+    pA.setAttribute('d',dA);pB.setAttribute('d',dB);
+    rungEls.forEach(R=>{
+      const vis=R.t<=progress,y=yTop+R.t*yRange,ph=R.t*turns*TAU+g;
+      const xA=midX+amp*Math.sin(ph),xB=midX-amp*Math.sin(ph),front=(Math.cos(ph)+1)/2,op=vis?(0.18+0.72*front):0;
+      R.ln.setAttribute('x1',xA);R.ln.setAttribute('y1',y);R.ln.setAttribute('x2',xB);R.ln.setAttribute('y2',y);R.ln.setAttribute('opacity',op.toFixed(2));
+      R.d1.setAttribute('cx',xA);R.d1.setAttribute('cy',y);R.d1.setAttribute('opacity',op.toFixed(2));
+      R.d2.setAttribute('cx',xB);R.d2.setAttribute('cy',y);R.d2.setAttribute('opacity',op.toFixed(2));
+    });
+    beads.forEach(B=>{
+      const vis=B.t<=progress+0.001,y=yTop+B.t*yRange,ph=B.t*turns*TAU+g;
+      const x=midX+amp*Math.sin(ph),depth=Math.cos(ph),sc=0.6+0.45*((depth+1)/2),op=vis?(0.4+0.6*((depth+1)/2)):0;
+      B.el.style.left=(x/VBW*100)+'%';B.el.style.top=(y/VBH*100)+'%';
+      B.el.style.transform='translate(-50%,-50%) scale('+sc.toFixed(3)+')';
+      B.el.style.opacity=op.toFixed(2);B.el.style.zIndex=Math.round((depth+1)*50);
+    });
+    gCalls.textContent=Math.round(progress*1284).toLocaleString();
+    gStrength.textContent=Math.round(progress*73)+'%';
+    if(running&&!reduce)raf=requestAnimationFrame(frame);
+  }
+  const hIO=new IntersectionObserver((es)=>es.forEach(e=>{
+    if(e.isIntersecting){if(reduce){progress=1;built=true;running=false;frame();}else if(!running){running=true;frame();}}
+    else{running=false;if(raf)cancelAnimationFrame(raf);}
+  }),{threshold:.25});
+  hIO.observe(helix);
+})();
 
 /* live clock */
 let mm=0;const clk=document.getElementById('clock');
