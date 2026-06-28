@@ -212,11 +212,14 @@ const SVG=DEF.map(makePortrait);
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){emailI.focus();showToast('Enter a valid email');return;}
     wlBtn.disabled=true;wlBtn.textContent='…';
     try{
-      await fetch('https://formsubmit.co/ajax/wayto1m@outlook.com',{
+      const res=await fetch('https://formsubmit.co/ajax/wayto1m@outlook.com',{
         method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-        body:JSON.stringify({email,_subject:'Way to $1M — new waitlist signup',_template:'table'})
+        body:JSON.stringify({email,_subject:'Way to $1M — new waitlist signup',_template:'table',_captcha:'false'})
       });
-      form.innerHTML='<span class="ok">✓ You’re on the list.</span>';
+      const data=await res.json().catch(()=>({}));
+      const ok=res.ok&&data&&(data.success===true||data.success==='true');
+      if(ok){form.innerHTML='<span class="ok">✓ You’re on the list.</span>';}
+      else{wlBtn.disabled=false;wlBtn.textContent='Notify me';showToast(data.message?'Almost there — confirm the form (check your inbox)':'Couldn’t submit — try again');}
     }catch(_){wlBtn.disabled=false;wlBtn.textContent='Notify me';showToast('Something went wrong — try again');}
   });
 
