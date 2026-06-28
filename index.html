@@ -212,7 +212,7 @@ const SVG=DEF.map(makePortrait);
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){emailI.focus();showToast('Enter a valid email');return;}
     wlBtn.disabled=true;wlBtn.textContent='…';
     try{
-      const res=await fetch('https://formsubmit.co/ajax/wayto1m@outlook.com',{
+      const res=await fetch('https://formsubmit.co/ajax/team@wayto1m.com',{
         method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
         body:JSON.stringify({email,_subject:'Way to $1M — new waitlist signup',_template:'table',_captcha:'false'})
       });
