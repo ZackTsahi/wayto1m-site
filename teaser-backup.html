@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Way to $1M — coming soon</title>
+<meta name="description" content="Coming soon.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="theme-color" content="#010409">
+<meta property="og:title" content="Way to $1M">
+<meta property="og:description" content="Coming soon.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wayto1m.com">
+<meta property="og:image" content="https://wayto1m.com/assets/icon.png">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#010409;--line2:#283340;--txt:#c4cdd8;--dim:#8b97a6;--hi:#f4f8fd;
+    --green:#3fb950;--green2:#56d364;--teal:#2dd4bf;--gold2:#ffcf5c;--blue:#58a6ff;
+    --head:'Sora',-apple-system,Segoe UI,Roboto,sans-serif;--body:'Inter',-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{overflow-x:hidden}
+  body{background:var(--bg);color:var(--txt);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;position:relative}
+  h1{font-family:var(--head);color:var(--hi);font-weight:800;letter-spacing:-.025em;line-height:1.05}
+  .grad{background:linear-gradient(100deg,var(--green2),var(--teal) 55%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .gold{color:var(--gold2)}
+  .glow{position:absolute;border-radius:50%;filter:blur(110px);opacity:.42;z-index:0;pointer-events:none}
+  .g1{width:680px;height:680px;background:radial-gradient(circle,rgba(45,212,191,.5),transparent 70%);top:-280px;left:-220px}
+  .g2{width:620px;height:620px;background:radial-gradient(circle,rgba(63,185,80,.42),transparent 70%);bottom:-260px;right:-200px}
+  .g3{width:460px;height:460px;background:radial-gradient(circle,rgba(88,166,255,.28),transparent 70%);top:34%;left:36%}
+
+  .cs{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:30px 22px 56px;min-height:100vh;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--head);font-weight:800;color:var(--hi);font-size:18px;margin-bottom:30px}
+  .brand img{width:34px;height:34px;border-radius:9px}
+  .kicker{font-family:var(--head);font-weight:700;letter-spacing:.28em;font-size:12px;text-transform:uppercase;color:var(--green2);display:inline-flex;align-items:center;gap:9px;margin-bottom:18px}
+  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--green2);box-shadow:0 0 10px var(--green2);animation:pulse 1.8s infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  h1{font-size:clamp(34px,6.4vw,58px);margin-bottom:10px}
+  .tag{font-family:var(--head);font-weight:600;font-size:clamp(12.5px,1.8vw,15px);letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
+  .hint{font-size:clamp(16px,2.1vw,19px);color:var(--dim);max-width:520px;line-height:1.6;margin-bottom:6px}
+  .hint b{color:var(--txt);font-weight:600}
+
+  /* DNA helix */
+  .helix{position:relative;width:min(330px,84vw);aspect-ratio:300/560;margin:14px auto 6px}
+  .helix-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 8px rgba(45,212,191,.3))}
+  .beads{position:absolute;inset:0}
+  .bead{position:absolute;left:50%;top:50%;width:10%;aspect-ratio:1;border-radius:9px;overflow:hidden;background:#0c1422;box-shadow:0 0 0 1px var(--line2);will-change:transform,opacity}
+  .bead.proven{box-shadow:0 0 0 1.4px var(--green2),0 0 14px -2px var(--green2)}
+  .bead .av{position:absolute;top:0;left:0;width:100%;aspect-ratio:100/132}
+  .bead .av svg{width:100%;height:auto;display:block}
+  .htag{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);font-family:var(--head);font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+  .htag b{color:var(--green2)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--head);font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .25s,background .2s;white-space:nowrap}
+  .btn-primary{background:linear-gradient(100deg,var(--green),var(--teal));color:#02130a;box-shadow:0 6px 30px -8px rgba(63,185,80,.6)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 44px -8px rgba(63,185,80,.8)}
+  .btn-primary:disabled{opacity:.6;cursor:default;transform:none}
+  .wl{display:flex;gap:9px;width:100%;max-width:380px;margin:22px auto 0}
+  .wl input{flex:1;min-width:0;background:rgba(255,255,255,.04);border:1px solid var(--line2);border-radius:999px;padding:13px 18px;color:var(--hi);font-family:var(--body);font-size:15px;outline:none;transition:border-color .2s}
+  .wl input::placeholder{color:#5d6b7a}
+  .wl input:focus{border-color:var(--green2)}
+  .ok{font-family:var(--head);font-weight:700;color:var(--green2);font-size:15px}
+  .save{margin-top:16px;background:none;border:none;color:var(--dim);font-size:13.5px;cursor:pointer;font-family:var(--head);font-weight:600;transition:color .2s}
+  .save:hover{color:var(--hi)}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:rgba(13,17,23,.96);border:1px solid var(--line2);color:var(--hi);font-size:14px;font-weight:500;padding:12px 20px;border-radius:12px;box-shadow:0 20px 50px -20px #000;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:30}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast b{font-family:var(--head);color:var(--green2)}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+
+<main class="cs">
+  <div class="brand"><img src="assets/icon.png" alt="Way to 1M"><span>Way to <span class="gold">$1M</span></span></div>
+
+  <h1><span class="grad">Coming soon.</span></h1>
+  <p class="tag">Simply different.</p>
+
+  <div class="helix" id="helix">
+    <svg class="helix-svg" id="helixSvg" viewBox="0 0 300 560" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="strandA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fb950"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient>
+        <linearGradient id="strandB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#58a6ff"/></linearGradient>
+      </defs>
+      <g id="rungs"></g>
+      <path id="pathA" fill="none" stroke="url(#strandA)" stroke-width="3" stroke-linecap="round"/>
+      <path id="pathB" fill="none" stroke="url(#strandB)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="beads" id="beads"></div>
+  </div>
+
+  <form class="wl" id="wl" novalidate>
+    <input type="email" id="wlEmail" name="email" placeholder="your@email.com" autocomplete="email" required>
+    <button class="btn btn-primary" type="submit" id="wlBtn">Notify me</button>
+  </form>
+  <button class="save" id="saveBtn">★ Save this page</button>
+  <a href="committee-preview-9fx3k7.html" style="display:inline-block;margin-top:20px;color:#9aa4b2;font-size:13.5px;text-decoration:none;border-bottom:1px solid rgba(154,164,178,.35);padding-bottom:2px">Take a peek inside →</a>
+  <div style="margin-top:16px;font-size:12px;letter-spacing:.06em;color:#6b7480">✳ Built on Claude</div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== parametric portraits (ported from the app) ===== */
+function hair(style,color){switch(style){
+  case"bald":return `<ellipse cx="50" cy="28" rx="20" ry="6" fill="${color}" opacity="0.25"/>`;
+  case"buzz":return `<path d="M28 36 Q28 14 50 14 Q72 14 72 36 Q68 22 50 22 Q32 22 28 36 Z" fill="${color}"/>`;
+  case"long":return `<g fill="${color}"><path d="M26 20 Q26 10 50 8 Q74 10 74 20 Q74 32 68 30 Q72 22 50 20 Q28 22 32 30 Z"/><rect x="20" y="28" width="10" height="50" rx="5"/><rect x="70" y="28" width="10" height="50" rx="5"/></g>`;
+  case"bun":return `<g fill="${color}"><circle cx="50" cy="11" r="9"/><path d="M28 20 Q28 10 50 8 Q72 10 72 20 Q68 28 50 26 Q32 28 28 20 Z"/></g>`;
+  case"curly":return `<g fill="${color}"><circle cx="28" cy="28" r="12"/><circle cx="43" cy="14" r="13"/><circle cx="57" cy="14" r="13"/><circle cx="72" cy="28" r="12"/><circle cx="22" cy="44" r="9"/><circle cx="78" cy="44" r="9"/></g>`;
+  case"afro":return `<circle cx="50" cy="24" r="30" fill="${color}"/>`;
+  case"side":return `<g fill="${color}"><path d="M28 20 Q28 10 50 8 Q72 10 72 20 Q68 28 50 26 Q32 28 28 20 Z"/><path d="M24 28 Q26 42 36 40 Q30 34 30 22 Z"/></g>`;
+  default:return `<path d="M28 20 Q28 10 50 8 Q72 10 72 20 Q68 28 50 26 Q32 28 28 20 Z" fill="${color}"/>`;}}
+function makePortrait(c){
+  const{skin,skinSh,hairColor,style="short",suit,shirt="#e7eef7",beard=false,beardColor,glasses=false,gaze=0,eyeColor="#3a2718",lipColor}=c;
+  const lip=lipColor||skinSh;
+  const hairBehind=["long","afro","bun"].includes(style)?hair(style,hairColor):"";
+  const hairFront=["long","afro","bun"].includes(style)?"":hair(style,hairColor);
+  const beardSVG=`<path d="M33 60 Q50 78 67 60 Q65 76 50 82 Q35 76 33 60 Z" fill="${beardColor||skinSh}" opacity="0.9"/>`;
+  const glassesSVG=`<g fill="none" stroke="#141e30" stroke-width="2" opacity="0.8"><rect x="31" y="44" width="15" height="11" rx="5.5"/><rect x="54" y="44" width="15" height="11" rx="5.5"/><line x1="46" y1="49" x2="54" y2="49"/><line x1="18" y1="48" x2="31" y2="48"/><line x1="69" y1="48" x2="82" y2="48"/></g>`;
+  const ex=gaze===-1?-1.5:gaze===1?1.5:0;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 132"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${suit}"/><stop offset="100%" stop-color="#08111e"/></linearGradient></defs>${hairBehind}<path d="M8 132 C8 96 28 88 50 88 C72 88 92 96 92 132 Z" fill="url(#sg)"/><path d="M42 89 L50 110 L58 89 Z" fill="${shirt}"/><rect x="44" y="70" width="12" height="20" rx="5" fill="${skinSh}"/><circle cx="23" cy="50" r="5" fill="${skin}"/><circle cx="77" cy="50" r="5" fill="${skin}"/><circle cx="23" cy="50" r="3" fill="${skinSh}" opacity="0.5"/><circle cx="77" cy="50" r="3" fill="${skinSh}" opacity="0.5"/><path d="M23 44 Q23 16 50 16 Q77 16 77 44 Q77 64 66 74 Q58 81 50 81 Q42 81 34 74 Q23 64 23 44 Z" fill="${skin}"/><path d="M50 17 Q77 18 77 44 Q77 64 66 74 Q59 80 51 81 Q63 72 64 50 Q65 28 50 17 Z" fill="${skinSh}" opacity="0.26"/><ellipse cx="50" cy="71" rx="15" ry="9" fill="${skinSh}" opacity="0.20"/><ellipse cx="40" cy="40" rx="11" ry="15" fill="#ffffff" opacity="0.09"/>${beard?beardSVG:""}<path d="M35 42 Q41 39.5 47 41.4" stroke="${hairColor}" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M53 41.4 Q59 39.5 65 42" stroke="${hairColor}" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M36 49.4 Q41 46.6 46 49.4 Q41 51.9 36 49.4 Z" fill="#f3f5f7"/><path d="M54 49.4 Q59 46.6 64 49.4 Q59 51.9 54 49.4 Z" fill="#f3f5f7"/><circle cx="${41+ex}" cy="49.3" r="2.3" fill="${eyeColor}"/><circle cx="${59+ex}" cy="49.3" r="2.3" fill="${eyeColor}"/><circle cx="${41+ex}" cy="49.3" r="1.0" fill="#0a0a0a"/><circle cx="${59+ex}" cy="49.3" r="1.0" fill="#0a0a0a"/><circle cx="${41+ex+0.8}" cy="48.3" r="0.6" fill="#ffffff"/><circle cx="${59+ex+0.8}" cy="48.3" r="0.6" fill="#ffffff"/><path d="M49.4 50 Q47.8 55 47.4 58 Q50 59.6 52.6 58" stroke="${skinSh}" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.42"/><path d="M45 65.4 Q50 67.8 55 65.4" stroke="${lip}" stroke-width="1.8" fill="none" stroke-linecap="round"/>${glasses?glassesSVG:""}${hairFront}</svg>`;
+}
+const DEF=[
+  {skin:"#e3b28a",skinSh:"#b8835a",hairColor:"#2a160c",style:"long",suit:"#3fb950",shirt:"#d6f0df",eyeColor:"#5a3a1e",lipColor:"#a25a52",gaze:0},
+  {skin:"#f0c89a",skinSh:"#c49464",hairColor:"#42280e",style:"side",suit:"#58a6ff",shirt:"#dae6fb",glasses:true,eyeColor:"#3b5a78",gaze:1},
+  {skin:"#c89a6a",skinSh:"#9c6e3e",hairColor:"#140d06",style:"long",suit:"#7c6cf0",shirt:"#e2defc",lipColor:"#9c5246",gaze:0},
+  {skin:"#8a5430",skinSh:"#623c1a",hairColor:"#6b6660",style:"buzz",suit:"#e06699",shirt:"#f5dde9",beard:true,beardColor:"#4a4640",gaze:-1},
+  {skin:"#e8b87a",skinSh:"#bc8a48",hairColor:"#241608",style:"bun",suit:"#2fae6a",shirt:"#d8f2e6",lipColor:"#a8604e",gaze:0},
+  {skin:"#f4d2a8",skinSh:"#d0a06a",hairColor:"#8c3c14",style:"curly",suit:"#e0a52f",shirt:"#fef0cc",eyeColor:"#5a3a1e",gaze:1},
+  {skin:"#d8b48c",skinSh:"#a88258",hairColor:"#9a9a9a",style:"side",suit:"#3f9be0",shirt:"#d6e8fb",glasses:true,eyeColor:"#3a4250",gaze:0},
+  {skin:"#e6bf96",skinSh:"#bc9060",hairColor:"#1a0f08",style:"long",suit:"#d6699a",shirt:"#f5dde9",lipColor:"#a8584e",gaze:-1},
+  {skin:"#c4a070",skinSh:"#96704a",hairColor:"#5a534c",style:"short",suit:"#3fb96a",shirt:"#d6f2e0",gaze:0},
+  {skin:"#d8a878",skinSh:"#a87a4a",hairColor:"#1e1208",style:"side",suit:"#fb923c",shirt:"#fde6cf",glasses:true,gaze:-1},
+  {skin:"#e8c49a",skinSh:"#bc9060",hairColor:"#241608",style:"bun",suit:"#2dd4bf",shirt:"#d2f5f0",lipColor:"#a8584e",gaze:0},
+  {skin:"#cf9a64",skinSh:"#a06e3c",hairColor:"#160d06",style:"afro",suit:"#22d3ee",shirt:"#caf0fa",lipColor:"#9c5446",gaze:1},
+  {skin:"#caa172",skinSh:"#9a7444",hairColor:"#1a1410",style:"short",suit:"#6366f1",shirt:"#e0e2fb",glasses:true,eyeColor:"#3a4250",gaze:0},
+  {skin:"#d9b48a",skinSh:"#ab835a",hairColor:"#241a10",style:"bun",suit:"#0ea5e9",shirt:"#d6eefb",lipColor:"#a8604e",gaze:0},
+  {skin:"#e6c39a",skinSh:"#b89066",hairColor:"#2a1a0e",style:"long",suit:"#a855f7",shirt:"#efe2fb",lipColor:"#a8584e",gaze:1},
+  {skin:"#e8bd8f",skinSh:"#bb8a5a",hairColor:"#1c1208",style:"buzz",suit:"#ef4444",shirt:"#fbdada",eyeColor:"#3b2a18",gaze:1}
+];
+const SVG=DEF.map(makePortrait);
+
+/* ===== DNA helix — all 16 partner faces, assembling ===== */
+(function(){
+  const helix=document.getElementById('helix');
+  const pA=document.getElementById('pathA'),pB=document.getElementById('pathB');
+  const rungsG=document.getElementById('rungs'),beadsEl=document.getElementById('beads');
+  const VBW=300,VBH=560,midX=150,amp=96,turns=3.1,yTop=56,yBot=504,yRange=yBot-yTop;
+  const proven=new Set([0,3,5,12]);
+  const beads=DEF.map((d,m)=>{
+    const el=document.createElement('div');el.className='bead'+(proven.has(m)?' proven':'');
+    el.innerHTML='<div class="av">'+SVG[m]+'</div>';beadsEl.appendChild(el);
+    return {el,t:(m+0.5)/DEF.length};
+  });
+  const NS='http://www.w3.org/2000/svg';
+  const rcol=['#3fb950','#2dd4bf','#3fb950','#fbbf24','#2dd4bf','#3fb950','#2dd4bf','#3fb950','#3fb950','#2dd4bf','#fbbf24','#3fb950'];
+  const rungEls=rcol.map((c,r)=>{
+    const ln=document.createElementNS(NS,'line');ln.setAttribute('stroke-width','2.2');ln.setAttribute('stroke-linecap','round');ln.setAttribute('stroke',c);
+    rungsG.appendChild(ln);return {ln,t:(r+0.5)/rcol.length};
+  });
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let g=0,progress=0,built=false,running=false,raf=null;const SAMP=72,TAU=Math.PI*2;
+  function frame(){
+    if(!reduce)g+=0.0105;
+    if(!built){progress=Math.min(1,progress+0.014);if(progress>=1)built=true;}
+    let dA='',dB='';const maxS=Math.round(SAMP*progress);
+    for(let s=0;s<=maxS;s++){
+      const t=s/SAMP,y=yTop+t*yRange,ph=t*turns*TAU+g;
+      const xA=midX+amp*Math.sin(ph),xB=midX-amp*Math.sin(ph);
+      dA+=(s===0?'M':'L')+xA.toFixed(1)+' '+y.toFixed(1);
+      dB+=(s===0?'M':'L')+xB.toFixed(1)+' '+y.toFixed(1);
+    }
+    pA.setAttribute('d',dA);pB.setAttribute('d',dB);
+    rungEls.forEach(R=>{
+      const vis=R.t<=progress,y=yTop+R.t*yRange,ph=R.t*turns*TAU+g;
+      const xA=midX+amp*Math.sin(ph),xB=midX-amp*Math.sin(ph),front=(Math.cos(ph)+1)/2,op=vis?(0.14+0.66*front):0;
+      R.ln.setAttribute('x1',xA);R.ln.setAttribute('y1',y);R.ln.setAttribute('x2',xB);R.ln.setAttribute('y2',y);R.ln.setAttribute('opacity',op.toFixed(2));
+    });
+    beads.forEach(B=>{
+      const vis=B.t<=progress+0.001,y=yTop+B.t*yRange,ph=B.t*turns*TAU+g;
+      const x=midX+amp*Math.sin(ph),depth=Math.cos(ph),sc=0.58+0.46*((depth+1)/2),op=vis?(0.38+0.62*((depth+1)/2)):0;
+      B.el.style.left=(x/VBW*100)+'%';B.el.style.top=(y/VBH*100)+'%';
+      B.el.style.transform='translate(-50%,-50%) scale('+sc.toFixed(3)+')';
+      B.el.style.opacity=op.toFixed(2);B.el.style.zIndex=Math.round((depth+1)*50);
+    });
+    if(running&&!reduce)raf=requestAnimationFrame(frame);
+  }
+  const hIO=new IntersectionObserver((es)=>es.forEach(e=>{
+    if(e.isIntersecting){if(reduce){progress=1;built=true;running=false;frame();}else if(!running){running=true;frame();}}
+    else{running=false;if(raf)cancelAnimationFrame(raf);}
+  }),{threshold:.05});
+  hIO.observe(helix);
+})();
+
+/* ===== waitlist + save-this-page ===== */
+(function(){
+  const toast=document.getElementById('toast');let tt=null;
+  function showToast(html){toast.innerHTML=html;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),4200);}
+
+  /* waitlist — captures emails via FormSubmit (no backend, no account) */
+  const form=document.getElementById('wl'),emailI=document.getElementById('wlEmail'),wlBtn=document.getElementById('wlBtn');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const email=emailI.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){emailI.focus();showToast('Enter a valid email');return;}
+    wlBtn.disabled=true;wlBtn.textContent='…';
+    try{
+      const res=await fetch('https://formsubmit.co/ajax/team@wayto1m.com',{
+        method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+        body:JSON.stringify({email,_subject:'Way to $1M — new waitlist signup',_template:'table',_captcha:'false'})
+      });
+      const data=await res.json().catch(()=>({}));
+      const ok=res.ok&&data&&(data.success===true||data.success==='true');
+      if(ok){form.innerHTML='<span class="ok">✓ You’re on the list.</span>';}
+      else{wlBtn.disabled=false;wlBtn.textContent='Notify me';showToast(data.message?'Almost there — confirm the form (check your inbox)':'Couldn’t submit — try again');}
+    }catch(_){wlBtn.disabled=false;wlBtn.textContent='Notify me';showToast('Something went wrong — try again');}
+  });
+
+  /* save / bookmark */
+  document.getElementById('saveBtn').addEventListener('click',async()=>{
+    if(navigator.share){try{await navigator.share({title:'Way to $1M',url:location.href});return;}catch(_){}}
+    const mac=/Mac|iPhone|iPad|iPod/.test(navigator.platform)||/Mac/.test(navigator.userAgent);
+    showToast('Press <b>'+(mac?'⌘ + D':'Ctrl + D')+'</b> to bookmark this page');
+  });
+})();
+</script>
+</body>
+</html>
