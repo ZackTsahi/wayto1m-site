@@ -314,10 +314,24 @@
   @keyframes alertGlow{0%,82%,100%{box-shadow:none}88%{box-shadow:0 0 0 1px rgba(63,185,80,.5),0 0 22px -6px rgba(63,185,80,.5)}}
   @media(prefers-reduced-motion:reduce){
     .constel-core::after,.scan-dot,.scanbar::after,.alert-card{animation:none!important}
+    .aurora::before,.aurora::after{animation:none!important}
   }
+  /* ambient aurora — premium depth behind everything */
+  .aurora{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+  .aurora::before,.aurora::after{content:"";position:absolute;width:62vw;height:62vw;border-radius:50%;filter:blur(120px);opacity:.15}
+  .aurora::before{background:radial-gradient(circle,#3fb950,transparent 62%);top:-16vw;left:-12vw;animation:auroraA 24s ease-in-out infinite alternate}
+  .aurora::after{background:radial-gradient(circle,#2dd4bf,transparent 62%);bottom:-22vw;right:-14vw;animation:auroraB 28s ease-in-out infinite alternate}
+  @keyframes auroraA{0%{transform:translate(0,0) scale(1)}100%{transform:translate(9vw,11vw) scale(1.12)}}
+  @keyframes auroraB{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-9vw,-7vw) scale(1.1)}}
+  /* "backed by Anthropic" hero badge */
+  .backed{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:8px 15px;border-radius:999px;border:1px solid rgba(63,185,80,.35);background:linear-gradient(180deg,rgba(63,185,80,.10),rgba(45,212,191,.03));font-size:13px;color:var(--txt);transition:transform .15s,border-color .2s}
+  .backed:hover{transform:translateY(-2px);border-color:rgba(63,185,80,.6)}
+  .backed b{color:var(--hi);font-weight:800}
+  .backed-star{color:var(--green2);font-size:14px}
 </style>
 </head>
 <body>
+<div class="aurora" aria-hidden="true"></div>
 
 <div class="glow g1"></div><div class="glow g2"></div>
 
@@ -350,6 +364,9 @@
         <span><b>✓</b> Your data stays on device</span>
         <span><b>✓</b> No ads, no tracking</span>
       </div>
+      <a class="backed" href="https://claude.com/programs/startups" target="_blank" rel="noopener">
+        <span class="backed-star">✳</span> Backed by <b>Anthropic</b> · Claude for Startups
+      </a>
     </div>
 
     <!-- LIVE BOARDROOM -->
@@ -579,7 +596,7 @@
     <a href="#" class="brand" style="font-size:15px"><img src="assets/icon.png" alt="" style="width:26px;height:26px"><span>Way to <span class="gold">$1M</span></span></a>
     <span style="opacity:.6">© 2026 · Built for serious investors, not gamblers.</span>
     <div class="foot-links">
-      <a href="https://claude.com" target="_blank" rel="noopener" title="The committee's reasoning is built on Claude">✳ Built on Claude</a>
+      <a href="https://claude.com/programs/startups" target="_blank" rel="noopener" title="Way to $1M is part of Anthropic's Claude for Startups program">✳ Claude for Startups</a>
       <a href="https://zacktsahi.github.io/wayto1m-privacy/" target="_blank" rel="noopener">Privacy</a>
       <a href="https://play.google.com/store/apps/details?id=com.tsahi.wayto1m" target="_blank" rel="noopener">Google Play</a>
     </div>
