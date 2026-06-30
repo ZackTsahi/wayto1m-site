@@ -256,6 +256,12 @@
   .cta-box h2{font-size:clamp(28px,4vw,42px);margin-bottom:16px}
   .cta-box p{color:var(--dim);font-size:16.5px;max-width:520px;margin:0 auto 26px}
   .cta-box .free{color:var(--green2);font-weight:700}
+  .wl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:540px;margin:0 auto}
+  .wl input{flex:1;min-width:240px;background:rgba(10,15,22,.7);border:1px solid var(--line2);border-radius:12px;padding:14px 16px;color:#e6edf6;font-size:16px;outline:none;transition:border-color .15s}
+  .wl input:focus{border-color:var(--green2)}
+  .wl .btn{white-space:nowrap}
+  .wl-msg{margin-top:16px;font-size:14px;color:var(--dim);min-height:20px}
+  .wl-msg .ok,.cta-box .ok{color:var(--green2);font-weight:700;font-size:16px}
 
   footer{border-top:1px solid var(--line);padding:40px 0;position:relative;z-index:2}
   .foot-in{display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--dim);font-size:13.5px}
@@ -461,7 +467,11 @@
       <span class="kicker">Founding 300</span>
       <h2 style="margin-top:14px">Pull up a chair.</h2>
       <p>Way to $1M is in closed beta. The first <span class="free">300 members get it free, forever</span> — and help shape the room. Drop your email and we'll send your invite the moment a seat opens.</p>
-      <a href="mailto:team@wayto1m.com?subject=Founding%20300%20%E2%80%94%20count%20me%20in&body=I'd%20like%20a%20seat%20in%20the%20Way%20to%20%241M%20boardroom." class="btn btn-primary" style="font-size:16px;padding:15px 30px">Claim my founding seat →</a>
+      <form id="wlForm" class="wl" novalidate>
+        <input type="email" id="wlEmail" name="email" placeholder="your@email.com" autocomplete="email" required>
+        <button type="submit" id="wlBtn" class="btn btn-primary" style="font-size:16px;padding:15px 30px">Claim my founding seat →</button>
+      </form>
+      <p id="wlMsg" class="wl-msg" aria-live="polite"></p>
     </div>
   </div>
 </section>
@@ -753,6 +763,29 @@ function play(){
 play();
 let timer=setInterval(play,3000);
 document.addEventListener('visibilitychange',()=>{clearInterval(timer);if(!document.hidden)timer=setInterval(play,3000);});
+
+/* ===== Founding-300 waitlist — captures emails via FormSubmit (no backend, no account) ===== */
+(function(){
+  const form=document.getElementById('wlForm');
+  if(!form) return;
+  const emailI=document.getElementById('wlEmail'),btn=document.getElementById('wlBtn'),msg=document.getElementById('wlMsg');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const email=emailI.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){emailI.focus();msg.textContent='Enter a valid email.';return;}
+    const label=btn.textContent;btn.disabled=true;btn.textContent='…';msg.textContent='';
+    try{
+      const res=await fetch('https://formsubmit.co/ajax/team@wayto1m.com',{
+        method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+        body:JSON.stringify({email,_subject:'Way to $1M — Founding 300 seat request',_template:'table',_captcha:'false'})
+      });
+      const data=await res.json().catch(()=>({}));
+      const ok=res.ok&&data&&(data.success===true||data.success==='true');
+      if(ok){form.innerHTML='<span class="ok">✓ Your seat is reserved — we’ll email your invite.</span>';}
+      else{btn.disabled=false;btn.textContent=label;msg.textContent=data.message?'Almost there — check your inbox to confirm.':'Couldn’t submit — please try again.';}
+    }catch(_){btn.disabled=false;btn.textContent=label;msg.textContent='Something went wrong — please try again.';}
+  });
+})();
 </script>
 </body>
 </html>
