@@ -272,6 +272,21 @@
     *{animation:none!important;transition:none!important}
     .reveal{opacity:1;transform:none}
   }
+  /* ── Live Tools (connectors) + Automation alerts ── */
+  .conn-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:460px;margin:0 auto}
+  .cchip{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid var(--line2);border-radius:12px;background:rgba(255,255,255,.03);font-size:13.5px;color:var(--hi);font-weight:600;transition:transform .15s,border-color .2s}
+  .cchip:hover{transform:translateY(-2px)}
+  .cchip.on{border-color:rgba(63,185,80,.5);background:linear-gradient(180deg,rgba(63,185,80,.13),rgba(45,212,191,.04))}
+  .cchip .on-dot{width:6px;height:6px;border-radius:50%;background:var(--green2);box-shadow:0 0 8px var(--green2)}
+  .alert-stack{display:flex;flex-direction:column;gap:12px;max-width:430px;margin:0 auto;width:100%}
+  .alert-card{display:flex;gap:13px;align-items:flex-start;border:1px solid var(--line2);border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.03)}
+  .alert-card .ai{font-size:20px;flex:0 0 auto;line-height:1.2}
+  .alert-card .at{font-family:var(--head);font-weight:800;color:var(--hi);font-size:14.5px}
+  .alert-card .ab{font-size:12.5px;color:var(--dim);margin-top:3px;line-height:1.5}
+  .alert-card.win{border-color:rgba(63,185,80,.45)}
+  .alert-card.risk{border-color:rgba(244,63,94,.4)}
+  .alert-foot{text-align:center;font-size:12.5px;color:var(--dim);margin-top:4px}
+  .alert-foot b{color:var(--green2)}
 </style>
 </head>
 <body>
@@ -283,6 +298,7 @@
     <a href="#" class="brand"><img src="assets/icon.png" alt="Way to 1M logo"><span>Way to <span class="gold">$1M</span></span></a>
     <div class="nav-links">
       <a href="#room">The Room</a>
+      <a href="#connects">Live tools</a>
       <a href="#learns">How it learns</a>
       <a href="#decision">The Decision</a>
       <a href="#get" class="btn btn-primary">Get early access</a>
@@ -358,15 +374,76 @@
     <div class="feat reveal">
       <span class="kicker">The Meeting</span>
       <h2>It runs like a <span class="grad">real call.</span></h2>
-      <p>Open the boardroom and it plays out live. Partners present to a shared screen, pull fresh data on request, and hand off to each other — while you sit in, hands-free.</p>
+      <p>Open the boardroom and it plays out live. Partners pull charts onto the shared screen, walk you through your portfolio tile by tile, and flag breaking news before you see it — handing off to each other while you sit in, hands-free.</p>
       <ul class="flist">
-        <li><span class="ic">✓</span> Partners fetch live info and put it on screen</li>
-        <li><span class="ic">✓</span> Jump in by voice — ask anyone, anytime</li>
-        <li><span class="ic">✓</span> Route a question to one specialist or the whole room</li>
+        <li><span class="ic">✓</span> Live charts &amp; your portfolio, presented on the shared screen</li>
+        <li><span class="ic">✓</span> Jump in by voice — or type and paste a link mid-meeting</li>
+        <li><span class="ic">✓</span> The news desk pings you first, before the headlines land</li>
+        <li><span class="ic">✓</span> Ask one specialist, or put it to the whole room</li>
       </ul>
     </div>
     <div class="col-v reveal">
       <div class="phone"><span class="phone-glow"></span><img src="assets/shot-03.jpg" alt="A partner presenting live in the boardroom"></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- IT CONNECTS / LIVE TOOLS -->
+<section id="connects">
+  <div class="wrap split">
+    <div class="feat reveal">
+      <span class="kicker">It Connects · Live Tools</span>
+      <h2>A committee wired into the <span class="grad">real world.</span></h2>
+      <p>Ask a question and the room reaches for live data on its own — prices, fundamentals, news, the crowd's mood. Connect your own systems and it reads those too. Built on the open <strong>Model Context Protocol</strong>, on whichever AI you choose.</p>
+      <ul class="flist">
+        <li><span class="ic">✓</span> Live market data built in — quotes, fundamentals, charts, news, sentiment</li>
+        <li><span class="ic">✓</span> 30+ connectors — SEC filings, 13F whales, macro &amp; FX, your Gmail, Sheets, Slack</li>
+        <li><span class="ic">✓</span> Bring any MCP server — your own tools, right in the room</li>
+        <li><span class="ic">✓</span> Runs on Claude, Gemini, or GPT — your key, your data, on device</li>
+      </ul>
+    </div>
+    <div class="col-v reveal">
+      <div class="conn-grid">
+        <span class="cchip on"><span class="on-dot"></span> 📈 Live quotes</span>
+        <span class="cchip on"><span class="on-dot"></span> 📊 Fundamentals</span>
+        <span class="cchip on"><span class="on-dot"></span> 📰 Market news</span>
+        <span class="cchip on"><span class="on-dot"></span> 💬 Sentiment</span>
+        <span class="cchip">📄 SEC filings</span>
+        <span class="cchip">🐋 13F whales</span>
+        <span class="cchip">🌍 Macro &amp; FX</span>
+        <span class="cchip">✉️ Your email</span>
+        <span class="cchip">🧾 Sheets</span>
+        <span class="cchip">🔔 Slack</span>
+        <span class="cchip">🧩 Any MCP server</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- IT WATCHES / AUTOMATION -->
+<section id="watches">
+  <div class="wrap split rev">
+    <div class="feat reveal">
+      <span class="kicker">It Watches · Automation</span>
+      <h2>It watches your book <span class="grad">so you don't have to.</span></h2>
+      <p>Set the rules once and the committee keeps an eye on every position — pinging you the moment something needs a decision. It only ever <strong>flags</strong>. It never buys, sells, or touches your brokerage. You stay in control.</p>
+      <ul class="flist">
+        <li><span class="ic">✓</span> Trim winners, dynamic stop-loss, concentration drift, tax-loss harvest</li>
+        <li><span class="ic">✓</span> Your thresholds — tuned to how you invest</li>
+        <li><span class="ic">✓</span> Alerts only — never an automatic trade</li>
+      </ul>
+    </div>
+    <div class="col-v reveal">
+      <div class="alert-stack">
+        <div class="alert-card win"><span class="ai">⬆️</span><div><div class="at">Trim candidate: NVDA +120%</div><div class="ab">Up 120% on cost and 40% of your book — consider trimming to lock gains.</div></div></div>
+        <div class="alert-card risk"><span class="ai">🛑</span><div><div class="at">Stop-loss watch: ASTS −12% today</div><div class="ab">Fell 12% today — review your stop and the thesis.</div></div></div>
+        <div class="alert-card"><span class="ai">🧾</span><div><div class="at">Tax-loss harvest: INTC −30%</div><div class="ab">A harvest candidate to offset gains (relevant to 25% Israeli CGT).</div></div></div>
+        <div class="alert-foot"><b>Alerts only</b> — the committee never trades for you.</div>
+      </div>
     </div>
   </div>
 </section>
