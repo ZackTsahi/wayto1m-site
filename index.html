@@ -49,8 +49,8 @@
   .nav-links a{color:var(--dim);font-size:14.5px;font-weight:500;transition:color .2s}
   .nav-links a:hover{color:var(--hi)}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--head);font-weight:700;font-size:15px;padding:13px 24px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .25s,background .2s;white-space:nowrap}
-  .btn-primary{background:linear-gradient(100deg,var(--green),var(--teal));color:#02130a;box-shadow:0 6px 30px -8px rgba(63,185,80,.6)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 44px -8px rgba(63,185,80,.8)}
+  .btn-primary{background:linear-gradient(100deg,var(--green),var(--teal));color:#02130a;box-shadow:0 6px 22px -10px rgba(63,185,80,.42)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 34px -10px rgba(63,185,80,.55)}
   .btn-ghost{background:rgba(255,255,255,.04);border-color:var(--line2);color:var(--hi)}
   .btn-ghost:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
   .nav-links a.btn-primary{color:#02130a;padding:10px 18px;font-size:14px}
@@ -65,7 +65,7 @@
   header{position:relative;z-index:2;padding:128px 0 60px;overflow-x:clip}
   .hero-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:46px;align-items:center}
   .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border:1px solid var(--line2);border-radius:999px;background:rgba(255,255,255,.03);font-size:13px;color:var(--dim);margin-bottom:24px}
-  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:pulse 1.8s infinite}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green2);box-shadow:0 0 8px rgba(86,211,100,.6);animation:pulse 1.8s infinite}
   @keyframes pulse{50%{opacity:.35}}
   h1{font-size:clamp(38px,5.6vw,62px);margin-bottom:20px}
   .hero .sub{font-size:clamp(16.5px,1.9vw,20px);color:var(--dim);max-width:520px;margin-bottom:30px;line-height:1.55}
@@ -82,7 +82,7 @@
   @keyframes ring{to{--a:360deg}}
   .room-bar{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.25)}
   .room-bar .live{display:flex;align-items:center;gap:7px;font-family:var(--head);font-weight:700;font-size:13.5px;color:var(--hi)}
-  .room-bar .live i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 9px var(--red);animation:pulse 1.8s infinite}
+  .room-bar .live i{width:8px;height:8px;border-radius:50%;background:var(--green2);box-shadow:0 0 8px rgba(86,211,100,.55);animation:pulse 1.8s infinite}
   .room-bar .rsub{font-size:12.5px;color:var(--dim)}
   .room-bar .rsub b{color:var(--txt);font-variant-numeric:tabular-nums}
   .room-bar .dots{margin-left:auto;color:var(--dim);letter-spacing:2px}
@@ -287,6 +287,8 @@
   .alert-card.risk{border-color:rgba(244,63,94,.4)}
   .alert-foot{text-align:center;font-size:12.5px;color:var(--dim);margin-top:4px}
   .alert-foot b{color:var(--green2)}
+  .capcur{color:var(--green2);font-weight:700;margin-left:1px;animation:capblink 1s steps(1) infinite}
+  @keyframes capblink{50%{opacity:0}}
   /* live-tools constellation — data flowing into the room */
   .constel{position:relative;width:100%;max-width:400px;aspect-ratio:360/320;margin:0 auto}
   .constel-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
@@ -294,11 +296,11 @@
   .cline.on{stroke:rgba(63,185,80,.3)}
   .cdot{fill:var(--green2);filter:drop-shadow(0 0 5px var(--green2))}
   .cdot.blue{fill:var(--blue);filter:drop-shadow(0 0 5px var(--blue))}
-  .constel-core{position:absolute;left:50%;top:50%;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 38%,rgba(63,185,80,.42),rgba(45,212,191,.06));border:1px solid rgba(63,185,80,.65);box-shadow:0 0 46px -6px rgba(63,185,80,.6);z-index:3}
+  .constel-core{position:absolute;left:50%;top:50%;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 38%,rgba(63,185,80,.32),rgba(45,212,191,.05));border:1px solid rgba(63,185,80,.5);box-shadow:0 0 36px -12px rgba(63,185,80,.4);z-index:3}
   .constel-core b{font-family:var(--head);font-weight:800;color:var(--hi);font-size:14.5px;line-height:1.1}
   .constel-core span{font-size:10px;color:var(--green2);margin-top:3px;letter-spacing:.04em}
   .constel-core::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(63,185,80,.3);animation:corePulse 2.6s ease-out infinite}
-  @keyframes corePulse{0%{transform:scale(.92);opacity:.75}100%{transform:scale(1.55);opacity:0}}
+  @keyframes corePulse{0%{transform:scale(.92);opacity:.5}100%{transform:scale(1.5);opacity:0}}
   .cnode{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:10px;border:1px solid var(--line2);background:rgba(11,16,24,.94);font-size:11.5px;font-weight:700;color:var(--hi);white-space:nowrap;z-index:2}
   .cnode.on{border-color:rgba(63,185,80,.55);color:#dffbe6}
   .cnode .nd{width:5px;height:5px;border-radius:50%;background:var(--green2);box-shadow:0 0 6px var(--green2)}
@@ -311,14 +313,14 @@
   .alert-card{animation:alertGlow 6s ease-in-out infinite}
   .alert-card:nth-child(2){animation-delay:2s}
   .alert-card:nth-child(3){animation-delay:4s}
-  @keyframes alertGlow{0%,82%,100%{box-shadow:none}88%{box-shadow:0 0 0 1px rgba(63,185,80,.5),0 0 22px -6px rgba(63,185,80,.5)}}
+  @keyframes alertGlow{0%,82%,100%{box-shadow:none}88%{box-shadow:0 0 0 1px rgba(63,185,80,.32),0 0 16px -8px rgba(63,185,80,.32)}}
   @media(prefers-reduced-motion:reduce){
     .constel-core::after,.scan-dot,.scanbar::after,.alert-card{animation:none!important}
     .aurora::before,.aurora::after{animation:none!important}
   }
   /* ambient aurora — premium depth behind everything */
   .aurora{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
-  .aurora::before,.aurora::after{content:"";position:absolute;width:62vw;height:62vw;border-radius:50%;filter:blur(120px);opacity:.15}
+  .aurora::before,.aurora::after{content:"";position:absolute;width:62vw;height:62vw;border-radius:50%;filter:blur(135px);opacity:.08}
   .aurora::before{background:radial-gradient(circle,#3fb950,transparent 62%);top:-16vw;left:-12vw;animation:auroraA 24s ease-in-out infinite alternate}
   .aurora::after{background:radial-gradient(circle,#2dd4bf,transparent 62%);bottom:-22vw;right:-14vw;animation:auroraB 28s ease-in-out infinite alternate}
   @keyframes auroraA{0%{transform:translate(0,0) scale(1)}100%{transform:translate(9vw,11vw) scale(1.12)}}
@@ -901,8 +903,23 @@ const scenes=[
 ];
 const stage=document.getElementById('stage');
 const cap=document.getElementById('captext');
-let idx=-1,cur=null;
+let idx=-1,cur=null,captTimer=null;
+const reduceM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function setSpeaker(name){document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('active',t.dataset.n===name));}
+/* live-transcript caption — types the message out after the speaker label */
+function typeCaption(html){
+  if(captTimer){clearInterval(captTimer);captTimer=null;}
+  const m=html.match(/^([\s\S]*?<\/b>)([\s\S]*)$/);
+  const prefix=m?m[1]:'', msg=(m?m[2]:html);
+  if(reduceM){cap.innerHTML=prefix+msg;return;}
+  cap.innerHTML=prefix+'<span class="capt"></span><span class="capcur">▍</span>';
+  const span=cap.querySelector('.capt'), cur=cap.querySelector('.capcur');
+  let i=0;
+  captTimer=setInterval(()=>{
+    i++; span.textContent=msg.slice(0,i);
+    if(i>=msg.length){clearInterval(captTimer);captTimer=null; if(cur)cur.style.animation='none',cur.style.opacity='.35';}
+  },24);
+}
 function play(){
   idx=(idx+1)%scenes.length;const sc=scenes[idx];
   const wrap=document.createElement('div');wrap.innerHTML=screens[sc.s]();
@@ -913,12 +930,12 @@ function play(){
     newCard.querySelectorAll('[data-w]').forEach(i=>setTimeout(()=>i.style.width=i.dataset.w+'%',120));
   }));
   cur=newCard;
-  cap.style.opacity=0;setTimeout(()=>{cap.innerHTML=sc.c;cap.style.opacity=1;},220);
+  cap.style.opacity=0;setTimeout(()=>{cap.style.opacity=1;typeCaption(sc.c);},220);
   setSpeaker(sc.sp);
 }
 play();
-let timer=setInterval(play,3000);
-document.addEventListener('visibilitychange',()=>{clearInterval(timer);if(!document.hidden)timer=setInterval(play,3000);});
+let timer=setInterval(play,3600);
+document.addEventListener('visibilitychange',()=>{clearInterval(timer);if(!document.hidden)timer=setInterval(play,3600);});
 
 /* ===== Founding-300 waitlist — captures emails via FormSubmit (no backend, no account) ===== */
 (function(){
